@@ -1,21 +1,23 @@
-# Campus Attendance Bot - Dire Dawa University (DDU)
+# Campus Attendance Bot — Dire Dawa University (DDU)
 
-An enterprise-grade, asynchronous Telegram-based attendance management system built for Dire Dawa University (DDU) using Python, Aiogram 3, and SQLite with Write-Ahead Logging (WAL) concurrency.
+An asynchronous Telegram-based attendance management system built for Dire Dawa University (DDU). Built with Python and Aiogram 3, utilizing SQLite configured with Write-Ahead Logging (WAL) to handle high-concurrency batch check-ins without write contention.
 
 ## System Architecture
-- **Frontend Client:** Telegram Platform (Cross-platform on Android, iOS, Desktop, and Web).
-- **Backend Service:** Python 3 (Aiogram 3, Asyncio).
-- **Database Layer:** SQLite with Write-Ahead Logging (WAL) enabled for high-concurrency parallel writes.
-- **Document Engine:** Vector-based PDF report generation using ReportLab.
+
+- **Interface:** Telegram Bot API (accessible across Mobile, Desktop, and Web clients).
+- **Runtime & Framework:** Python 3.11+, `aiogram` 3.x, `asyncio`.
+- **Database:** SQLite with Write-Ahead Logging (`PRAGMA journal_mode=WAL`) for non-blocking concurrent writes.
+- **Reporting Engine:** Vector-based PDF generation via ReportLab.
 
 ## Core Features
-1. **Multi-Course Administration:** Authorized instructors can configure and oversee multiple distinct courses across different departments, academic years, and semesters.
-2. **Deep-Link Enrollment via Class Representatives (CR):** Generates unique Telegram deep-links forwarded by instructors to Class Representatives for streamlined student account onboarding.
-3. **Timed Anti-Cheat In-Class Sessions:** Generates a randomized 4-digit PIN with a strict 60-second time-restricted window to eliminate remote proxy check-ins from dormitories.
-4. **Dead Phone / No-Device Manual Override:** Real-time missing student roster allowing instructors to verify and mark students with depleted batteries in one tap with an official audit trail.
-5. **Instant University PDF Dossier Export:** Generates official institutional PDF attendance tables with clean borders, zebra striping, and formal signature blocks ready for departmental archival.
-6. **Academic Disciplinary Watchdog (3-Absence Threshold):** Automatically monitors cumulative missed sessions and flags students exceeding the university absence limit.
-7. **Permission & Leave of Absence Workflow:** Provides structured submission and review of student medical and personal leave requests directly within Telegram.
+
+- **Multi-Course Management:** Configure and manage separate course sections across departments, batches, and semesters from a single instructor interface.
+- **Deep-Link Onboarding:** Instructors generate course-specific Telegram deep-links for Class Representatives (CR) to distribute, allowing friction-free student self-enrollment.
+- **Ephemeral PIN Check-In:** Generates a randomized 4-digit token with a 60-second TTL to eliminate remote proxy sign-ins from outside the lecture hall.
+- **Manual Override Fallback:** Live missing-student roster allows instructors to verify and mark present any students with dead batteries or missing devices with one tap.
+- **Absence Threshold Alerts:** Tracks attendance history automatically and flags students reaching the 3-absence limit prior to exam qualification cutoffs.
+- **In-Chat Excuse Workflow:** Students can submit medical notes or leave requests directly through the bot for instructor review and approval.
+- **Departmental PDF Export:** Generates print-ready attendance dossiers formatted with alternating row stripes and signature blocks for departmental archiving.
 
 ## Project Structure
 ```
